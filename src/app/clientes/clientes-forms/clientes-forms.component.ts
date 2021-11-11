@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Cliente } from '../cliente';
 @Component({
   selector: 'app-clientes-forms',
   templateUrl: './clientes-forms.component.html',
@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientesFormsComponent implements OnInit {
 
+  cliente:Cliente;
   constructor() { }
 
   ngOnInit(): void {
