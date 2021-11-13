@@ -10,7 +10,7 @@ export class ClientesService {
   constructor(private http: HttpClient) {  
 
   }
-salvar(cliente: Cliente): Observable<Cliente>{
+salvar(cliente: Cliente): Observable <Cliente>{
   return this.http.post<Cliente>('http://localhost:8080/clientes',cliente)
 }
 getCliente():Cliente{
