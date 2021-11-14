@@ -11,11 +11,12 @@ export class ClientesService {
 
   }
 salvar(cliente: Cliente): Observable <Cliente>{
-  return this.http.post<Cliente>('http://localhost:8080/clientes',cliente)
+  return this.http.post<Cliente>('http://localhost:8080/clientes',cliente);
 }
-getCliente():Cliente{
-  let cliente: Cliente = new Cliente();
-  return cliente;
+getClientes(): Observable <Cliente[]>{
+  return this.http.get<Cliente[]>('http://localhost:8080/clientes'); 
 }
 
 }
+
+
