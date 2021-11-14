@@ -13,6 +13,9 @@ export class ClientesService {
 salvar(cliente: Cliente): Observable <Cliente>{
   return this.http.post<Cliente>('http://localhost:8080/clientes',cliente);
 }
+atualizar(cliente: Cliente): Observable <Cliente>{
+  return this.http.put<Cliente>(`http://localhost:8080/clientes/${cliente.id}`,cliente);
+}
 getClientes(): Observable <Cliente[]>{
   return this.http.get<Cliente[]>('http://localhost:8080/clientes'); 
 }
