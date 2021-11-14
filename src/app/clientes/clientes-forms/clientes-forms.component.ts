@@ -1,9 +1,10 @@
 
-import { StringMap } from '@angular/compiler/src/compiler_facade_interface';
+
 import { Component,  OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { ClientesService } from 'src/app/clientes.service';
-import { callbackify } from 'util';
+
 import { Cliente } from '../cliente';
 @Component({
   selector: 'app-clientes-forms',
@@ -16,7 +17,7 @@ export class ClientesFormsComponent implements OnInit {
   success: Boolean =false;
   errors: String[];
 
-  constructor(private service: ClientesService) {
+  constructor(private service: ClientesService, private router:Router) {
     this.cliente = new Cliente();
 
   }
@@ -24,6 +25,11 @@ export class ClientesFormsComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  voltarParaLista(){
+    this.router.navigate(['/clientes-lista']);
+
+  }
+
 onSubmit(){
   this.service.salvar(this.cliente)
   .subscribe(response =>{
@@ -34,12 +40,9 @@ onSubmit(){
     this.errors = errorResponse.error;
     this.success=false;
     console.log(errorResponse.error); 
+   
     
-    
-    
-  }
-  
-  )
+  })
 }
 }
 
