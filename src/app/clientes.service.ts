@@ -16,7 +16,9 @@ salvar(cliente: Cliente): Observable <Cliente>{
 getClientes(): Observable <Cliente[]>{
   return this.http.get<Cliente[]>('http://localhost:8080/clientes'); 
 }
-
+getClientesById(id:number):Observable<Cliente>{
+  return this.http.get<any>(`http://localhost:8080/clientes/${id}`)
+}
 }
 
 
