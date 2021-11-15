@@ -22,6 +22,7 @@ getClientes(): Observable <Cliente[]>{
 getClientesById(id:number):Observable<Cliente>{
   return this.http.get<any>(`http://localhost:8080/clientes/${id}`)
 }
+
 }
 
 

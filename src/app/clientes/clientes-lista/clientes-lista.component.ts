@@ -10,6 +10,7 @@ import { Cliente } from '../cliente';
 })
 export class ClientesListaComponent implements OnInit {
 clientes:Cliente[]=[];
+clienteSelecionado:Cliente;
 
   constructor(private service: ClientesService, private router:Router) { }
 
@@ -19,5 +20,8 @@ clientes:Cliente[]=[];
   }
 novoCadastro(){
   this.router.navigate(['/clientes-forms'])
+}
+preparaDelecao(cliente: Cliente){
+this.clienteSelecionado = cliente;
 }
 }
