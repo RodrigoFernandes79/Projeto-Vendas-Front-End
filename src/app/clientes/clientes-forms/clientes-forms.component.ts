@@ -1,7 +1,8 @@
 
 
 import { Component,  OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 import { ClientesService } from 'src/app/clientes.service';
 
@@ -29,17 +30,18 @@ export class ClientesFormsComponent implements OnInit {
     
 
   ngOnInit(): void {
-    let params = this.activatedRoute.params
-    if(params && params.value && params.value.id){
-      this.id = params.value.id;
-      this.service.getClientesById(this.id)
-      .subscribe(
+    let params: Observable<Params> = this.activatedRoute.params
+    params.subscribe(urlParams => {
+      this.id = urlParams['id'];
+      if(this.id){
+        this.service
+        .getClientesById(this.id)
+        .subscribe(
         response=> this.cliente = response,
         errorResponse=> this.cliente= new Cliente()
-      )
-
-    }
-    
+        )
+      }
+    })
   }
   voltarParaLista(){
     this.router.navigate(['/clientes-lista']);
